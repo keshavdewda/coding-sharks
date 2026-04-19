@@ -1,6 +1,6 @@
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { useMemo, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../Images/logo.png';
 import SearchBar from './SearchBar';
@@ -10,12 +10,17 @@ import "./Navbar.css";
 
 const NavbarComponent = () => {
     const topics = useMemo(() => flattenTopics(data?.cards || []), []);
+    const [expanded, setExpanded] = useState(false);
+
+    const handleNavClick = () => {
+        setExpanded(false);
+    };
 
     return (
-        <Navbar bg="white" expand="lg" sticky="top" className="navbar-custom">
+        <Navbar bg="white" expand="lg" sticky="top" className="navbar-custom" expanded={expanded} onToggle={setExpanded}>
             <Container fluid>
                 {/* Logo */}
-                <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
+                <Navbar.Brand as={NavLink} to="/" className="d-flex align-items-center" onClick={handleNavClick}>
                     <img
                         src={logo}
                         width="180"
@@ -39,18 +44,35 @@ const NavbarComponent = () => {
 
                     {/* Navigation Links */}
                     <Nav className="ms-auto mb-2 mb-lg-0 nav-links-container">
-                        <Nav.Link as={Link} to="/" className="nav-link">
+                        <NavLink
+                            to="/"
+                            end
+                            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                            onClick={handleNavClick}
+                        >
                             Curriculum
-                        </Nav.Link>
-                        <Nav.Link as={Link} to="/topic/introduction-to-js-programming" className="nav-link">
+                        </NavLink>
+                        <NavLink
+                            to="/topic/introduction-to-js-programming"
+                            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                            onClick={handleNavClick}
+                        >
                             Learning Hub
-                        </Nav.Link>
-                        <Nav.Link as={Link} to="/jscompiler" className="nav-link">
+                        </NavLink>
+                        <NavLink
+                            to="/jscompiler"
+                            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                            onClick={handleNavClick}
+                        >
                             JS Compiler
-                        </Nav.Link>
-                        <Nav.Link as={Link} to="/Ai" className="nav-link">
+                        </NavLink>
+                        <NavLink
+                            to="/Ai"
+                            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                            onClick={handleNavClick}
+                        >
                             AI Mentor
-                        </Nav.Link>
+                        </NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

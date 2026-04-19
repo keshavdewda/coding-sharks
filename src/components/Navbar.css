@@ -89,44 +89,50 @@
 
 .nav-link {
     font-weight: 600 !important;
-    color: rgb(240 82 4);
+    color: #444;
     padding: 0.8rem 1.2rem !important;
     border-radius: 12px;
     transition: var(--transition);
     position: relative;
     font-size: 1.1rem;
     text-align: center;
+    text-decoration: none !important;
 }
 
-.nav-link:before {
+/* Underline only on hover */
+.nav-link::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 50%;
-    width: 0;
-    height: 3px;
-    background: rgb(240 82 4);
-    border-radius: 10px;
-    transition: var(--transition);
     transform: translateX(-50%);
+    width: 0%;
+    height: 3px;
+    background: rgb(240, 82, 4);
+    border-radius: 10px;
+    transition: width 0.3s ease;
 }
 
 .nav-link:hover {
-    color: rgb(240 82 4);
+    color: rgb(240, 82, 4);
     background-color: rgba(240, 82, 4, 0.05);
+    text-decoration: none !important;
 }
 
-.nav-link:hover:before {
+.nav-link:hover::after {
     width: 70%;
 }
 
+/* Active: same color as hover, NO underline */
 .nav-link.active {
-    color: rgb(240 82 4);
-    background-color: rgba(240, 82, 4, 0.1) !important;
+    color: rgb(240, 82, 4) !important;
+    font-weight: 700 !important;
+    background-color: rgba(240, 82, 4, 0.08) !important;
+    text-decoration: none !important;
 }
 
-.nav-link.active:before {
-    width: 70%;
+.nav-link.active::after {
+    width: 0% !important;
 }
 
 .custom-toggler {
