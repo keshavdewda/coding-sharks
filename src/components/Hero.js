@@ -9,37 +9,35 @@ const Hero = ({ heading, subheading, ctaText, imageSrc, onCtaClick }) => {
 
   return (
     <section className="hero-section">
-      <div className="container">
-        <div className="row align-items-center">
-          <div className="col-lg-6 hero-content">
-            <h1 className="hero-heading">
-              {before}
-              <span className="highlight-text">{highlightPhrase}</span>
-              {after}
-            </h1>
-            <p className="hero-subheading">{subheading}</p>
-            <div className="hero-cta-wrapper">
-              <button
-                type="button"
-                className="btn btn-primary cta-button"
-                onClick={onCtaClick}
-              >
-                {ctaText}
-              </button>
-              <div className="trust-line">
-                <span>✓ Beginner to Advanced</span>
-                <span>✓ Real Projects</span>
-                <span>✓ Industry-Focused Learning</span>
-              </div>
+      <div className="hero-container">
+        <div className="hero-content">
+          <h1 className="hero-heading">
+            {before}
+            <span className="highlight-text">{highlightPhrase}</span>
+            {after}
+          </h1>
+          <p className="hero-subheading">{subheading}</p>
+          <div className="hero-cta-wrapper">
+            <button
+              type="button"
+              className="btn btn-primary cta-button"
+              onClick={onCtaClick}
+            >
+              {ctaText}
+            </button>
+            <div className="trust-line">
+              <span>✓ Beginner to Advanced</span>
+              <span>✓ Real Projects</span>
+              <span>✓ Industry-Focused Learning</span>
             </div>
           </div>
-          <div className="col-lg-6 hero-image-container">
-            <img
-              src={imageSrc}
-              alt="Coding Institute"
-              className="img-fluid hero-image"
-            />
-          </div>
+        </div>
+        <div className="hero-image-container">
+          <img
+            src={imageSrc}
+            alt="Coding Institute"
+            className="hero-image"
+          />
         </div>
       </div>
     </section>
