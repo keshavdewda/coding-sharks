@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Search() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -77,8 +78,8 @@ function Search() {
             <p>{card.content}</p>
             {card.links && (
               <div className="links">
-                {card.links.map((link, linkIndex) => (
-                  <a key={linkIndex} href={link.url}>{link.text}</a>
+                {card.links.map((topic, linkIndex) => (
+                  <Link key={linkIndex} to={`/topic/${topic.slug}`}>{topic.text}</Link>
                 ))}
               </div>
             )}

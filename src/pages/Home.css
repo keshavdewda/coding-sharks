@@ -25,9 +25,12 @@
     }
   }
 
-  .heading{
-    color: rgb(240 82 4);
-    text-align: center;
-    margin-top: 35px;
-    
-  }
+.programming-section .heading {
+  color: rgb(240 82 4);
+  text-align: center;
+  margin: 8px 0 0;
+}
+
+#curriculum {
+  scroll-margin-top: 120px;
+}

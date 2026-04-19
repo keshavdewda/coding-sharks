@@ -9,7 +9,7 @@ import {
   useTheme,
   useMediaQuery,
   Button,
-  CircularProgress
+  CircularProgress,
 } from '@mui/material';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -24,6 +24,18 @@ console.warn("This is a sample warning");
 doubled.reduce((sum, value) => sum + value, 0);`;
 
 const Compiler = () => {
+  // Suppress ResizeObserver loop errors (caused by Monaco on resize)
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.message === 'ResizeObserver loop completed with undelivered notifications.') {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+      }
+    };
+    window.addEventListener('error', handler);
+    return () => window.removeEventListener('error', handler);
+  }, []);
+
   const [code, setCode] = useState(DEFAULT_CODE);
   const [output, setOutput] = useState('');
   const [consoleMessages, setConsoleMessages] = useState([]);
@@ -94,10 +106,10 @@ const Compiler = () => {
       try {
         const result = eval(code);
         nextOutput = typeof result === 'undefined'
-          ? 'Execution completed successfully.'
+          ? '✅ Execution completed successfully.'
           : formatValue(result);
       } catch (error) {
-        const errorMessage = `Error: ${error.message}`;
+        const errorMessage = `❌ Error: ${error.message}`;
         nextOutput = errorMessage;
         nextConsoleMessages.push({ type: 'error', message: errorMessage });
         setActiveTab(1);
@@ -155,30 +167,32 @@ const Compiler = () => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          minHeight: isMobile ? 'auto' : '80vh',
-          background: 'linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)',
-          p: isMobile ? 1.5 : 2.5,
-          gap: 2
+          minHeight: 'calc(100vh - 130px)',
+          background: 'linear-gradient(135deg, #f5f7fa 0%, #eef2f5 100%)',
+          p: isMobile ? 2 : 3,
+          gap: 2.5
         }}
       >
         <Paper
           elevation={0}
           sx={{
-            borderRadius: 2,
-            border: '1px solid #e2e8f0',
+            borderRadius: 3,
+            border: '1px solid rgba(226, 232, 240, 0.8)',
             backgroundColor: '#ffffff',
-            p: 1,
+            p: 1.5,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: 1,
-            flexWrap: 'wrap'
+            gap: 1.5,
+            flexWrap: 'wrap',
+            backdropFilter: 'blur(4px)',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
           }}
         >
-          <Typography variant="body2" sx={{ color: '#334155', fontWeight: 600 }}>
-            JS Compiler Controls
+          <Typography variant="body2" sx={{ color: '#1e293b', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-0.2px' }}>
+            JavaScript Playground
           </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
             <Button
               onClick={executeCode}
               disabled={isRunning || !isEditorReady}
@@ -188,17 +202,19 @@ const Compiler = () => {
               sx={{
                 textTransform: 'none',
                 fontWeight: 600,
+                fontSize: '0.8rem',
+                px: 2,
                 bgcolor: '#f97316',
-                boxShadow: '0 4px 12px rgba(249, 115, 22, 0.28)',
-                transition: '0.2s ease',
+                boxShadow: '0 4px 12px rgba(249, 115, 22, 0.25)',
+                transition: 'all 0.2s ease',
                 '&:hover': {
                   bgcolor: '#ea580c',
                   transform: 'translateY(-1px)',
-                  boxShadow: '0 8px 16px rgba(249, 115, 22, 0.3)'
+                  boxShadow: '0 6px 16px rgba(249, 115, 22, 0.35)'
                 }
               }}
             >
-              {isRunning ? 'Running...' : 'Run'}
+              {isRunning ? 'Running...' : '▶ Run'}
             </Button>
             <Button
               onClick={resetEditor}
@@ -207,19 +223,17 @@ const Compiler = () => {
               sx={{
                 textTransform: 'none',
                 fontWeight: 600,
+                fontSize: '0.8rem',
                 borderColor: '#cbd5e1',
-                color: '#334155',
-                boxShadow: '0 1px 2px rgba(15, 23, 42, 0.08)',
-                transition: '0.2s ease',
+                color: '#475569',
                 '&:hover': {
                   borderColor: '#94a3b8',
                   backgroundColor: '#f8fafc',
-                  transform: 'translateY(-1px)',
-                  boxShadow: '0 4px 10px rgba(15, 23, 42, 0.12)'
+                  transform: 'translateY(-1px)'
                 }
               }}
             >
-              Reset
+              ↺ Reset
             </Button>
             <Button
               onClick={clearConsole}
@@ -228,19 +242,17 @@ const Compiler = () => {
               sx={{
                 textTransform: 'none',
                 fontWeight: 600,
+                fontSize: '0.8rem',
                 borderColor: '#cbd5e1',
-                color: '#334155',
-                boxShadow: '0 1px 2px rgba(15, 23, 42, 0.08)',
-                transition: '0.2s ease',
+                color: '#475569',
                 '&:hover': {
                   borderColor: '#94a3b8',
                   backgroundColor: '#f8fafc',
-                  transform: 'translateY(-1px)',
-                  boxShadow: '0 4px 10px rgba(15, 23, 42, 0.12)'
+                  transform: 'translateY(-1px)'
                 }
               }}
             >
-              Clear Console
+              ⌧ Clear
             </Button>
           </Box>
         </Paper>
@@ -250,7 +262,7 @@ const Compiler = () => {
             flex: 1,
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-            gap: 2
+            gap: 2.5
           }}
         >
           <Paper
@@ -258,37 +270,50 @@ const Compiler = () => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              borderRadius: '8px',
-              border: '1px solid #eee',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
-              overflow: 'hidden'
+              borderRadius: 3,
+              border: '1px solid rgba(226, 232, 240, 0.8)',
+              backgroundColor: '#ffffff',
+              boxShadow: '0 8px 20px rgba(0,0,0,0.04)',
+              overflow: isMobile ? 'visible' : 'hidden',
+              transition: 'box-shadow 0.2s ease',
+              '&:hover': {
+                boxShadow: '0 12px 28px rgba(0,0,0,0.06)'
+              }
             }}
           >
             <Box
               sx={{
-                px: 1.5,
-                py: 1,
+                px: 2,
+                py: 1.2,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                borderBottom: '1px solid rgba(148, 163, 184, 0.25)',
-                backgroundColor: '#f8fafc'
+                borderBottom: '1px solid rgba(148, 163, 184, 0.2)',
+                backgroundColor: '#fafcff'
               }}
             >
-              <Typography sx={{ color: '#1e293b', fontWeight: 600, fontSize: '0.92rem' }}>
-                JavaScript Editor
+              <Typography sx={{ color: '#0f172a', fontWeight: 700, fontSize: '0.9rem', lineHeight: 1.2 }}>
+                ✏️ JavaScript Editor
               </Typography>
-              <Typography sx={{ color: '#64748b', fontWeight: 500, fontSize: '0.78rem' }}>
-                Monaco
+              <Typography sx={{ color: '#64748b', fontWeight: 500, fontSize: '0.7rem', fontFamily: 'monospace' }}>
+                ES6+
               </Typography>
             </Box>
 
             <Box
               sx={{
-                flex: 1,
-                minHeight: isMobile ? 300 : 560,
+                flex: isMobile ? '0 0 auto' : 1,
+                height: isMobile ? '250px' : 'auto',
+                minHeight: isMobile ? 'auto' : 600,
+                overflow: 'hidden',
+                touchAction: 'pan-y',
                 bgcolor: '#0f172a',
-                borderTop: '1px solid rgba(148, 163, 184, 0.18)'
+                '& .monaco-editor, & .monaco-editor .overflow-guard, & .monaco-editor textarea': {
+                  touchAction: 'pan-y !important',
+                },
+                '& .monaco-editor .scrollbar': {
+                  touchAction: 'auto !important',
+                },
               }}
             >
               <Editor
@@ -301,66 +326,73 @@ const Compiler = () => {
                 options={{
                   minimap: { enabled: !isMobile },
                   fontSize: isMobile ? 13 : 14,
-                  fontFamily: "'Fira Code', Consolas, 'Courier New', monospace",
-                  lineHeight: 22,
+                  fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
+                  lineHeight: 23,
                   wordWrap: 'on',
                   scrollBeyondLastLine: false,
                   automaticLayout: true,
                   padding: { top: 16, bottom: 16 },
                   lineNumbersMinChars: isMobile ? 3 : 4,
-                  smoothScrolling: true
+                  smoothScrolling: true,
+                  cursorBlinking: 'smooth',
+                  renderWhitespace: 'selection',
+                  scrollbar: {
+                    vertical: 'visible',
+                    horizontal: 'visible',
+                    useShadows: false,
+                    verticalHasArrows: false,
+                    horizontalHasArrows: false,
+                  },
                 }}
               />
             </Box>
           </Paper>
 
+          {/* Output/Console Panel - Fixed to take remaining height on mobile */}
           <Paper
             elevation={0}
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              borderRadius: 2,
-              border: '1px solid #e2e8f0',
-              boxShadow: '0 6px 18px rgba(15, 23, 42, 0.06)',
+              borderRadius: 3,
+              border: '1px solid rgba(226, 232, 240, 0.8)',
+              boxShadow: '0 8px 20px rgba(0,0,0,0.04)',
               overflow: 'hidden',
-              borderLeft: '1px solid #eee',
-              position: 'relative',
-              '&::before': isMobile
-                ? undefined
-                : {
-                    content: '""',
-                    position: 'absolute',
-                    left: -10,
-                    top: 16,
-                    bottom: 16,
-                    width: 1,
-                    backgroundColor: 'rgba(148, 163, 184, 0.28)'
-                  }
+              backgroundColor: '#ffffff',
+              transition: 'box-shadow 0.2s ease',
+              flex: 1, // Allow this panel to grow
+              minHeight: isMobile ? '300px' : 'auto', // Ensure minimum height on mobile
+              '&:hover': {
+                boxShadow: '0 12px 28px rgba(0,0,0,0.06)'
+              }
             }}
           >
-            <Box sx={{ borderBottom: '1px solid rgba(148, 163, 184, 0.3)', backgroundColor: '#f8fafc' }}>
+            <Box sx={{ borderBottom: '1px solid rgba(148, 163, 184, 0.2)', backgroundColor: '#fafcff' }}>
               <Tabs
                 value={activeTab}
                 onChange={(e, newValue) => setActiveTab(newValue)}
                 variant={isMobile ? 'fullWidth' : 'standard'}
                 sx={{
-                  minHeight: 42,
+                  minHeight: 44,
                   '& .MuiTab-root': {
                     textTransform: 'none',
                     fontWeight: 600,
-                    minHeight: 42,
-                    color: '#475569'
+                    fontSize: '0.85rem',
+                    minHeight: 44,
+                    color: '#64748b'
                   },
                   '& .Mui-selected': {
-                    color: '#0f172a'
+                    color: '#f97316'
                   },
                   '& .MuiTabs-indicator': {
-                    backgroundColor: '#f97316'
+                    backgroundColor: '#f97316',
+                    height: 3,
+                    borderRadius: '3px 3px 0 0'
                   }
                 }}
               >
-                <Tab label="Output" />
-                <Tab label="Console" />
+                <Tab label="📤 Output" />
+                <Tab label="📟 Console" />
               </Tabs>
             </Box>
 
@@ -368,54 +400,86 @@ const Compiler = () => {
               <Box
                 sx={{
                   flex: 1,
-                  p: '16px',
-                  minHeight: isMobile ? 220 : 560,
+                  p: 2,
                   overflowY: 'auto',
-                  bgcolor: '#fafafa',
+                  bgcolor: '#ffffff',
                   color: '#0f172a',
-                  fontFamily: "'Fira Code', Consolas, 'Courier New', monospace",
+                  fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
                   whiteSpace: 'pre-wrap',
-                  fontSize: isMobile ? '0.78rem' : '0.86rem',
-                  lineHeight: 1.6
+                  fontSize: isMobile ? '0.8rem' : '0.88rem',
+                  lineHeight: 1.6,
+                  borderTop: '1px solid #f1f5f9'
                 }}
               >
-                {output || 'Run your code to see output'}
+                {output ? (
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
+                    <Typography component="span" sx={{ color: '#10b981', fontWeight: 600, fontSize: '1rem' }}>
+                      ▸
+                    </Typography>
+                    <Typography component="span" sx={{ wordBreak: 'break-word' }}>
+                      {output}
+                    </Typography>
+                  </Box>
+                ) : (
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8' }}>
+                    <Typography variant="body2">✨ Run your code to see the output</Typography>
+                  </Box>
+                )}
               </Box>
             ) : (
               <Box
                 ref={consoleContainerRef}
                 sx={{
                   flex: 1,
-                  p: isMobile ? 2 : 2.5,
-                  minHeight: isMobile ? 220 : 560,
-                  overflow: 'auto',
-                  bgcolor: '#fafafa',
-                  fontFamily: "'Fira Code', Consolas, 'Courier New', monospace",
-                  fontSize: isMobile ? '0.78rem' : '0.84rem',
-                  lineHeight: 1.55
+                  p: 2,
+                  overflowY: 'auto',
+                  bgcolor: '#0f172a',
+                  fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
+                  fontSize: isMobile ? '0.8rem' : '0.85rem',
+                  lineHeight: 1.6
                 }}
               >
                 {consoleMessages.length === 0 ? (
-                  <Typography sx={{ color: '#64748b', fontSize: '0.85rem' }}>
-                    Console output will appear here
-                  </Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+                    <Typography sx={{ color: '#64748b', fontSize: '0.85rem' }}>
+                      🟢 Console output will appear here
+                    </Typography>
+                  </Box>
                 ) : (
                   consoleMessages.map((entry, index) => (
                     <Box
                       key={`${entry.type}-${index}`}
                       sx={{
-                        color:
-                          entry.type === 'error'
-                            ? '#f44336'
-                            : entry.type === 'warn'
-                              ? '#ff9800'
-                              : 'inherit',
-                        mb: 1,
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: 1,
+                        mb: 1.2,
+                        pb: 0.5,
+                        borderBottom: index !== consoleMessages.length - 1 ? '1px solid rgba(71, 85, 105, 0.3)' : 'none',
+                        color: entry.type === 'error'
+                          ? '#f87171'
+                          : entry.type === 'warn'
+                            ? '#fbbf24'
+                            : '#e2e8f0',
                         whiteSpace: 'pre-wrap',
                         wordBreak: 'break-word'
                       }}
                     >
-                      {entry.message}
+                      <Typography component="span" sx={{ 
+                        fontWeight: 600, 
+                        fontSize: '0.7rem',
+                        color: entry.type === 'error'
+                          ? '#f87171'
+                          : entry.type === 'warn'
+                            ? '#fbbf24'
+                            : '#38bdf8',
+                        minWidth: '45px'
+                      }}>
+                        {entry.type === 'error' ? '✗' : entry.type === 'warn' ? '⚠' : '›'}
+                      </Typography>
+                      <Typography component="span" sx={{ flex: 1 }}>
+                        {entry.message}
+                      </Typography>
                     </Box>
                   ))
                 )}
@@ -430,15 +494,3 @@ const Compiler = () => {
 };
 
 export default Compiler;
-
-
-
-
-
-
-
-
-
-
-
-

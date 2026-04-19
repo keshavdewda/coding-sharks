@@ -3,44 +3,37 @@
     {
       "heading": "Fundamentals",
       "content": "Learn core JavaScript concepts like variables, functions, and scope...",
-
       "links": [
         {
           "text": "Introduction to JS Programming",
-          "url": "/js",
+          "slug": "introduction-to-js-programming",
           "pageContent": {
             "description": "JavaScript (JS) is a versatile, high-level programming language primarily used for web development. It enables dynamic content on websites, runs on the client side, and supports event-driven programming, enhancing user interactivity.",
             "title1": "Console, Alert & Document.write",
             "para1": "The console is a browser developer tool for debugging. Alert shows popup messages, while document.write() outputs to the HTML document (use sparingly).",
             "code1": "// Basic number check example\nlet num = 20;\n\nif(num % 2 === 0) {\n  console.log(num + \" is Even\");\n  \n  if(num > 15) {\n    alert(num + \" is greater than 15\");\n  } else {\n    document.write(num + \" is 15 or less\");\n  }\n} else {\n  console.log(num + \" is Odd\");\n}",
-
             "title3": "Three Ways to Display 'Hello, World!'",
             "heading3Subheading1": "console.log() - For debugging",
             "heading3Subheading2": "alert() - For user messages",
             "heading3Subheading3": "document.write() - For page content",
-
             "title4": "1. Using console.log()",
             "title41": "Prints to browser's developer console",
             "code2": "console.log(\"Hello, World!\");\n// Output: Hello, World! (in console)",
             "result": "Hello, World!",
-
             "title5": "2. Using alert()",
             "title51": "Displays a popup dialog box",
             "code3": "alert(\"Hello, World!\");\n// Shows popup with message",
             "result1": "Hello, World! (in alert box)",
-
             "title6": "3. Using document.write()",
             "title61": "document.write() is used when you want to print the content to the HTML document.",
             "code4": "document.write(\"<h1>Hello, World!</h1>\");\n// Writes to HTML page as heading",
             "result2": "Hello, World! (as page content)",
-
             "chapterLink": "#"
           }
         },
-
         {
           "text": "JavaScript Basics",
-          "url": "/jsb",
+          "slug": "javascript-basics",
           "pageContent": {
             "description": "Explore the fundamental concepts of JavaScript, including variables, data types, and basic syntax. Learn the building blocks that form the foundation of JavaScript programming.",
             "title1": "Variables and Data Types",
@@ -65,10 +58,9 @@
             "chapterLink": "#"
           }
         },
-
         {
           "text": "Setting Up Environment",
-          "url": "/sue",
+          "slug": "setting-up-environment",
           "pageContent": {
             "description": "Setting up a proper development environment is essential for JavaScript programming. This guide covers the basic setup, tools, and service worker configuration.",
             "title1": "Setting Up Environment in JS",
@@ -95,7 +87,7 @@
         },
         {
           "text": "Getting Started with JavaScript",
-          "url": "/gs",
+          "slug": "getting-started-with-javascript",
           "pageContent": {
             "description": "JavaScript (JS) is a powerful scripting language widely used for web development. In this chapter, we'll embark on the journey of learning JavaScript from scratch.",
             "title1": "Introduction to Coding",
@@ -122,7 +114,7 @@
         },
         {
           "text": "Variables and Constants",
-          "url": "/vc",
+          "slug": "variables-and-constants",
           "pageContent": {
             "description": "JavaScript (JS) is a versatile, high-level programming language primarily used for web development. It enables dynamic content on websites, runs on the client side, and supports event-driven programming, enhancing user interactivity.",
             "title1": "Introduction to JavaScript Basics",
@@ -148,7 +140,7 @@
         },
         {
           "text": "Operators and Expressions",
-          "url": "/oe",
+          "slug": "operators-and-expressions",
           "pageContent": {
             "description": "JavaScript (JS) is a versatile, high-level programming language primarily used for web development. It enables dynamic content on websites, runs on the client side, and supports event-driven programming, enhancing user interactivity.",
             "title1": "Operators in JavaScript",
@@ -175,57 +167,47 @@
         },
         {
           "text": "Control Flow",
-          "url": "/cf",
+          "slug": "control-flow",
           "pageContent": {
             "description": "Control flow statements determine the execution order of JavaScript code. Learn conditional logic and loops to control program behavior.",
             "title1": "Conditional Statements",
             "para2": "Conditional statements allow different code blocks to execute based on specified conditions. Master these fundamentals to make decisions in your code.",
             "code1": "// Basic conditional structure\nconst age = 18;\n\nif (age >= 18) {\n  console.log('Access granted');\n} else {\n  console.log('Access denied');\n}",
-
             "title2": "If/Else Statements",
             "heading2Subheading1": "if Statement",
             "heading2Subheading2": "else Statement",
             "heading2Subheading3": "else if Statement",
-
             "title3": "1. if Statement",
             "title31": "Execute code only when a condition is true:",
             "code2": "// Check if user is logged in\nconst isLoggedIn = true;\n\nif (isLoggedIn) {\n  console.log('Welcome back!');\n  showDashboard();\n}",
-
             "title4": "2. else Statement",
             "title41": "Handle the alternative case when the condition is false:",
             "code3": "// User authentication\nconst passwordCorrect = false;\n\nif (passwordCorrect) {\n  console.log('Login successful');\n} else {\n  console.log('Invalid password');\n  showError();\n}",
-
             "title5": "3. else if Statement",
             "title51": "Chain multiple conditions together:",
             "code4": "// Grade evaluation\nconst score = 85;\n\nif (score >= 90) {\n  console.log('Grade: A');\n} else if (score >= 80) {\n  console.log('Grade: B');\n} else if (score >= 70) {\n  console.log('Grade: C');\n} else {\n  console.log('Grade: D or below');\n}",
-
             "title6": "Switch Statement",
             "para6": "Clean alternative for multiple conditions comparing the same value:",
             "code5": "// Day of week actions\nconst day = 'Tuesday';\n\nswitch (day) {\n  case 'Monday':\n    startWeek();\n    break;\n  case 'Friday':\n    prepareWeekend();\n    break;\n  case 'Saturday':\n  case 'Sunday':\n    weekendActivities();\n    break;\n  default:\n    workDayRoutine();\n}",
-
             "title7": "Loop Structures",
             "heading7Subheading1": "for Loop",
             "heading7Subheading2": "while Loop",
             "heading7Subheading3": "do-while Loop",
-
             "title8": "1. for Loop",
             "title81": "Repeat code a specific number of times:",
             "code6": "// Countdown timer\nfor (let seconds = 10; seconds > 0; seconds--) {\n  console.log(seconds + ' seconds remaining');\n}\nconsole.log('Liftoff!');",
-
             "title9": "2. while Loop",
             "title91": "Repeat while condition remains true:",
             "code7": "// Game loop\nlet gameRunning = true;\nlet score = 0;\n\nwhile (gameRunning) {\n  score += playRound();\n  gameRunning = checkGameStatus();\n}\n\nconsole.log('Final score:', score);",
-
             "title10": "3. do-while Loop",
             "title101": "Execute at least once, then check condition:",
             "code8": "// User input validation\nlet userInput;\n\ndo {\n  userInput = prompt('Enter yes or no:');\n} while (userInput !== 'yes' && userInput !== 'no');\n\nconsole.log('You entered:', userInput);",
-
             "chapterLink": "#"
           }
         },
         {
           "text": "Functions and Scope",
-          "url": "/fc",
+          "slug": "functions-and-scope",
           "pageContent": {
             "description": "JavaScript (JS) is a versatile, high-level programming language primarily used for web development. It enables dynamic content on websites, runs on the client side, and supports event-driven programming, enhancing user interactivity.",
             "title1": "Hello World Programme",
@@ -251,7 +233,7 @@
         },
         {
           "text": "Arrays and Objects",
-          "url": "/ao",
+          "slug": "arrays-and-objects",
           "pageContent": {
             "description": "JavaScript (JS) is a versatile, high-level programming language primarily used for web development. It enables dynamic content on websites, runs on the client side, and supports event-driven programming, enhancing user interactivity.",
             "title1": "Introduction to Arrays",
@@ -277,7 +259,7 @@
         },
         {
           "text": "Error Handling and Debugging",
-          "url": "/ehd",
+          "slug": "error-handling-and-debugging",
           "pageContent": {
             "description": "JavaScript (JS) is a versatile, high-level programming language primarily used for web development. It enables dynamic content on websites, runs on the client side, and supports event-driven programming, enhancing user interactivity.",
             "title1": "Introduction to Debugging",
@@ -307,13 +289,12 @@
         }
       ]
     },
-
     {
       "heading": "JavaScript Core",
       "links": [
         {
           "text": "Closures and Callbacks",
-          "url": "/cc",
+          "slug": "closures-and-callbacks",
           "pageContent": {
             "description": "Closures and callbacks are fundamental concepts in JavaScript programming. Closures allow functions to retain access to variables from their outer scope even after the outer function has finished executing. Callbacks, on the other hand, are functions passed as arguments to another function and executed at a later point in time, often used for asynchronous operations.",
             "title1": "Understanding Closures",
@@ -340,7 +321,7 @@
         },
         {
           "text": "Promises and Asynchronous",
-          "url": "/pa",
+          "slug": "promises-and-asynchronous",
           "pageContent": {
             "description": "Promises are a powerful abstraction for handling asynchronous operations in JavaScript. They provide a cleaner and more structured way to deal with asynchronous code compared to traditional callbacks. This chapter explores the concept of promises and their role in managing asynchronous tasks.",
             "title1": "Understanding Promises",
@@ -367,7 +348,7 @@
         },
         {
           "text": "Event Handling",
-          "url": "/eh",
+          "slug": "event-handling",
           "pageContent": {
             "description": "Event handling is a crucial aspect of web development, allowing you to respond to user interactions and create dynamic and interactive user interfaces. This chapter delves into the concepts of event handling, event listeners, and the various events triggered by user actions.",
             "title1": "Understanding Events",
@@ -394,7 +375,7 @@
         },
         {
           "text": "Document Object Model",
-          "url": "/dom",
+          "slug": "document-object-model",
           "pageContent": {
             "description": "The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of a document as a tree of objects, allowing developers to interact with and manipulate the content, structure, and style of a web page. This chapter explores the fundamentals of the DOM and its usage in web development.",
             "title1": "Understanding the DOM",
@@ -421,7 +402,7 @@
         },
         {
           "text": "Manipulating the DOM with JS",
-          "url": "/mdj",
+          "slug": "manipulating-the-dom-with-js",
           "pageContent": {
             "description": "Manipulating the Document Object Model (DOM) using JavaScript is a fundamental skill for web developers. This chapter focuses on practical techniques and methods to dynamically modify, update, and interact with the DOM, providing a hands-on guide to enhance web page functionality.",
             "title1": "Understanding DOM Manipulation",
@@ -448,7 +429,7 @@
         },
         {
           "text": "AJAX and Fetch API",
-          "url": "/afa",
+          "slug": "ajax-and-fetch-api",
           "pageContent": {
             "description": "Asynchronous JavaScript and XML (AJAX) and the Fetch API are essential tools for making asynchronous requests in web development. This chapter explores the concepts of AJAX, its evolution with the Fetch API, and how these technologies enable communication with servers, fetching data, and updating web pages without requiring a full page reload.",
             "title1": "Understanding AJAX",
@@ -475,7 +456,7 @@
         },
         {
           "text": "JSON and Data Serialization",
-          "url": "/jds",
+          "slug": "json-and-data-serialization",
           "pageContent": {
             "description": "JavaScript Object Notation (JSON) is a lightweight data interchange format that is easy for humans to read and write. This chapter explores the fundamentals of JSON, its syntax, and how it is used for data serialization and exchange in web development.",
             "title1": "Introduction to JSON",
@@ -502,7 +483,7 @@
         },
         {
           "text": "ES6+ Features",
-          "url": "/ef",
+          "slug": "es6-features",
           "pageContent": {
             "description": "ECMAScript 6 (ES6) and subsequent versions bring significant enhancements and new features to JavaScript, improving its readability, expressiveness, and functionality. This chapter explores some of the key features introduced in ES6 and later versions, empowering developers with powerful tools for modern web development.",
             "title1": "Introduction to ES6+",
@@ -529,7 +510,7 @@
         },
         {
           "text": "Modules and Module Bundlers",
-          "url": "/mmb",
+          "slug": "modules-and-module-bundlers",
           "pageContent": {
             "description": "Modularization is a crucial concept in modern JavaScript development, enabling the organization of code into reusable and manageable units. This chapter explores the use of modules in JavaScript and the role of module bundlers in optimizing and packaging code for web applications.",
             "title1": "Understanding Modules",
@@ -556,7 +537,7 @@
         },
         {
           "text": "Promises and Async/Await",
-          "url": "/paa",
+          "slug": "promises-and-async-await",
           "pageContent": {
             "description": "Promises and the Async/Await syntax are powerful tools for handling asynchronous operations in JavaScript. This chapter explores these features, providing a comprehensive guide on working with promises and simplifying asynchronous code using Async/Await.",
             "title1": "Understanding Promises",
@@ -583,13 +564,12 @@
         }
       ]
     },
-
     {
       "heading": "Frontend Frameworks",
       "links": [
         {
           "text": "Frontend Framework",
-          "url": "/ff",
+          "slug": "frontend-framework",
           "pageContent": {
             "description": "Frontend frameworks are powerful tools that streamline the process of building dynamic and responsive user interfaces. These frameworks provide pre-built components, a structured architecture, and efficient development workflows, enabling developers to create modern and visually appealing web applications.",
             "title1": "Benefits of Using Frontend Frameworks",
@@ -616,7 +596,7 @@
         },
         {
           "text": "React Basics",
-          "url": "/rb",
+          "slug": "react-basics",
           "pageContent": {
             "description": "React is a popular JavaScript library for building user interfaces, known for its component-based architecture and efficient rendering. This chapter introduces the fundamental concepts of React, providing a solid foundation for developing dynamic and interactive web applications.",
             "title1": "Introduction to React",
@@ -641,10 +621,9 @@
             "chapterLink": "#"
           }
         },
-
         {
           "text": "React Router and Navigation",
-          "url": "/rrn",
+          "slug": "react-router-and-navigation",
           "pageContent": {
             "description": "React Router is a standard library for routing in React applications, enabling navigation between different components or pages. This chapter explores the usage of React Router to create dynamic and navigable user interfaces in React-based web applications.",
             "title1": "Introduction to React Router",
@@ -669,10 +648,9 @@
             "chapterLink": "#"
           }
         },
-
         {
           "text": "State Management in React",
-          "url": "/smr",
+          "slug": "state-management-in-react",
           "pageContent": {
             "description": "State management is a critical aspect of building robust React applications. This chapter explores various state management techniques in React, including local component state, lifting state up, and using state management libraries like Redux, providing developers with tools to efficiently manage and share state across components.",
             "title1": "Understanding State in React",
@@ -697,10 +675,9 @@
             "chapterLink": "#"
           }
         },
-
         {
           "text": "Styling in React",
-          "url": "/sr",
+          "slug": "styling-in-react",
           "pageContent": {
             "description": "Styling is a crucial aspect of creating visually appealing and user-friendly React applications. This chapter explores various approaches to styling React components, including inline styles, CSS-in-JS libraries, and preprocessor integration, providing developers with options to suit their preferences and project requirements.",
             "title1": "Introduction to Styling in React",
@@ -725,10 +702,9 @@
             "chapterLink": "#"
           }
         },
-
         {
           "text": "Handling Forms and User Input",
-          "url": "/hfui",
+          "slug": "handling-forms-and-user-input",
           "pageContent": {
             "description": "Forms play a crucial role in collecting user input in React applications. This chapter explores the various techniques for handling forms and user input, including controlled components, form validation, and the submission process, providing developers with the tools to create interactive and user-friendly forms.",
             "title1": "Introduction to Handling Forms in React",
@@ -753,10 +729,9 @@
             "chapterLink": "#"
           }
         },
-
         {
           "text": "Lifecycle Methods in React",
-          "url": "/lmr",
+          "slug": "lifecycle-methods-in-react",
           "pageContent": {
             "description": "Understanding the lifecycle of a React component is essential for effective component management and optimization. This chapter explores the various lifecycle methods in React, including mounting, updating, and unmounting phases, providing insights into when and how to use each method to achieve specific behaviors and optimizations.",
             "title1": "Introduction to React Lifecycle Methods",
@@ -781,10 +756,9 @@
             "chapterLink": "#"
           }
         },
-
         {
           "text": "Introduction to Angular or Vue",
-          "url": "/iav",
+          "slug": "introduction-to-angular-or-vue",
           "pageContent": {
             "description": "Angular and Vue are popular JavaScript frameworks for building modern, scalable, and maintainable web applications. This chapter provides an overview of both frameworks, highlighting their key features, architecture, and usage scenarios, helping developers make informed decisions based on their project requirements and preferences.",
             "title1": "Introduction to Angular",
@@ -809,10 +783,9 @@
             "chapterLink": "#"
           }
         },
-
         {
           "text": "Single Page Applications",
-          "url": "/spa",
+          "slug": "single-page-applications",
           "pageContent": {
             "description": "Single Page Applications (SPAs) have become a popular approach for building responsive and seamless web experiences. This chapter provides an in-depth exploration of SPAs, covering their architecture, advantages, and key considerations in development, empowering developers to create modern and efficient web applications.",
             "title1": "Introduction to Single Page Applications (SPAs)",
@@ -837,10 +810,9 @@
             "chapterLink": "#"
           }
         },
-
         {
           "text": "Testing Frontend Code",
-          "url": "/tfc",
+          "slug": "testing-frontend-code",
           "pageContent": {
             "description": "Testing frontend code is a crucial aspect of ensuring the reliability and quality of web applications. This chapter delves into various testing strategies, tools, and best practices for frontend development, equipping developers with the skills to create robust and bug-free user interfaces.",
             "title1": "Introduction to Testing Frontend Code",
@@ -867,18 +839,17 @@
         }
       ]
     },
-
     {
       "heading": "Node.js",
       "links": [
         {
           "text": "Introduction to Node.js",
-          "url": "/in",
+          "slug": "introduction-to-node-js",
           "pageContent": {
             "description": "Node.js is a powerful JavaScript runtime built on the V8 JavaScript engine. It allows developers to execute JavaScript code on the server-side, enabling the development of scalable and high-performance network applications. Node.js is known for its event-driven, non-blocking I/O model, making it well-suited for handling concurrent requests.",
             "title1": "Key Features of Node.js",
             "para1": "Node.js comes with several key features that make it a popular choice for building server-side applications. These features include a single-threaded event loop, asynchronous and non-blocking operations, and a vast ecosystem of packages available through npm (Node Package Manager).",
-            "code1": "// Example: Simple HTTP Server in Node.js\nconst http = require('http');\n\nconst server = http.createServer((req, res) => {\n    res.writeHead(200, { 'Content-Type': 'text/plain' });\n    res.end('Hello, Node.js!\n');\n});\n\nconst port = 3000;\nserver.listen(port, () => {\n    console.log(`Server running at http://localhost:${port}/`);\n});",
+            "code1": "// Example: Simple HTTP Server in Node.js\nconst http = require('http');\n\nconst server = http.createServer((req, res) => {\n    res.writeHead(200, { 'Content-Type': 'text/plain' });\n    res.end('Hello, Node.js!\\n');\n});\n\nconst port = 3000;\nserver.listen(port, () => {\n    console.log(`Server running at http://localhost:${port}/`);\n});",
             "title3": "Node.js Modules",
             "heading3Subheading1": "CommonJS Modules",
             "heading3Subheading2": "npm (Node Package Manager)",
@@ -897,7 +868,7 @@
         },
         {
           "text": "Node.js Modules and NPM",
-          "url": "/nmn",
+          "slug": "node-js-modules-and-npm",
           "pageContent": {
             "description": "Understanding Node.js modules and utilizing the Node Package Manager (NPM) are fundamental skills for Node.js developers. This chapter explores the concept of modules, their role in Node.js applications, and how NPM streamlines the process of managing dependencies and packages.",
             "title1": "Introduction to Node.js Modules",
@@ -924,7 +895,7 @@
         },
         {
           "text": "RESTful APIs with Express.js",
-          "url": "/rae",
+          "slug": "restful-apis-with-express-js",
           "pageContent": {
             "description": "Building RESTful APIs using Express.js is a core skill for web developers. This chapter explores the powerful Express.js framework and guides developers through creating scalable, efficient, and well-structured APIs for their web applications.",
             "title1": "Introduction to RESTful APIs",
@@ -951,7 +922,7 @@
         },
         {
           "text": "Database Interaction",
-          "url": "/di",
+          "slug": "database-interaction",
           "pageContent": {
             "description": "Interacting with databases is a fundamental aspect of many web applications. This chapter explores techniques for connecting, querying, and managing databases, providing developers with the knowledge to build robust and data-driven web applications.",
             "title1": "Introduction to Database Interaction",
@@ -978,7 +949,7 @@
         },
         {
           "text": "Authentication and Authorization",
-          "url": "/aa",
+          "slug": "authentication-and-authorization",
           "pageContent": {
             "description": "Implementing secure authentication and authorization mechanisms is crucial for safeguarding web applications. This chapter explores best practices, techniques, and frameworks for user authentication and authorization, ensuring the protection of sensitive resources.",
             "title1": "Introduction to Authentication and Authorization",
@@ -1005,7 +976,7 @@
         },
         {
           "text": "Middleware in Express",
-          "url": "/me",
+          "slug": "middleware-in-express",
           "pageContent": {
             "description": "Middleware functions play a crucial role in the Express.js framework, enabling developers to customize the request-response cycle. This chapter explores the concept of middleware, its implementation, and how it enhances the functionality and flexibility of Express.js applications.",
             "title1": "Introduction to Middleware in Express.js",
@@ -1032,7 +1003,7 @@
         },
         {
           "text": "Error Handling in Node.js",
-          "url": "/ehn",
+          "slug": "error-handling-in-node-js",
           "pageContent": {
             "description": "Proper error handling is crucial for building robust and resilient Node.js applications. This chapter explores best practices, strategies, and tools for handling errors effectively, ensuring a stable and reliable application even in unexpected scenarios.",
             "title1": "Introduction to Error Handling in Node.js",
@@ -1059,7 +1030,7 @@
         },
         {
           "text": "Real-time Communication",
-          "url": "/rtc",
+          "slug": "real-time-communication",
           "pageContent": {
             "description": "Real-time communication is a vital aspect of modern web applications, enabling instant updates and interactions. This chapter explores techniques, protocols, and frameworks for implementing real-time communication features, enhancing the responsiveness and user experience of web applications.",
             "title1": "Introduction to Real-time Communication",
@@ -1086,7 +1057,7 @@
         },
         {
           "text": "Testing Backend Code",
-          "url": "/tbc",
+          "slug": "testing-backend-code",
           "pageContent": {
             "description": "Testing is a critical aspect of backend development, ensuring the reliability and correctness of server-side code. This chapter explores various testing methodologies, tools, and best practices for testing backend code in Node.js applications.",
             "title1": "Introduction to Testing Backend Code",
@@ -1113,7 +1084,7 @@
         },
         {
           "text": "Deployment and Hosting",
-          "url": "/dh",
+          "slug": "deployment-and-hosting",
           "pageContent": {
             "description": "Deploying and hosting web applications is a crucial step in making them accessible to users. This chapter explores various deployment strategies, hosting platforms, and best practices to ensure a smooth and reliable deployment process for your web applications.",
             "title1": "Introduction to Deployment and Hosting",
@@ -1140,13 +1111,12 @@
         }
       ]
     },
-
     {
       "heading": "Full-Stack Architecture",
       "links": [
         {
           "text": "Integrating Frontend & Backend",
-          "url": "/ifb",
+          "slug": "integrating-frontend-and-backend",
           "pageContent": {
             "description": "Integrating frontend and backend systems is a crucial aspect of web development, enabling the creation of dynamic and interactive web applications. This process involves establishing communication between the user interface (frontend) and server-side logic (backend), allowing seamless data exchange and user interaction.",
             "title1": "Communication Methods",
@@ -1170,7 +1140,7 @@
         },
         {
           "text": "Authentication",
-          "url": "/a",
+          "slug": "authentication",
           "pageContent": {
             "description": "Implementing secure authentication is paramount for protecting user accounts and sensitive information. This chapter explores authentication mechanisms, best practices, and frameworks for building robust authentication systems in web applications.",
             "title1": "Introduction to Authentication",
@@ -1197,7 +1167,7 @@
         },
         {
           "text": "State Management",
-          "url": "/sm",
+          "slug": "state-management",
           "pageContent": {
             "description": "Efficient state management is crucial for building scalable and responsive web applications. This chapter explores various state management techniques, libraries, and best practices to effectively manage the state of your application.",
             "title1": "Introduction to State Management",
@@ -1224,7 +1194,7 @@
         },
         {
           "text": "Optimizing Performance",
-          "url": "/op",
+          "slug": "optimizing-performance",
           "pageContent": {
             "description": "Achieving optimal performance is crucial for delivering a seamless user experience in web applications. This chapter explores performance optimization techniques, tools, and best practices to ensure your application runs efficiently and responsively.",
             "title1": "Introduction to Performance Optimization",
@@ -1251,7 +1221,7 @@
         },
         {
           "text": "Security Best Practices",
-          "url": "/sbp",
+          "slug": "security-best-practices",
           "pageContent": {
             "description": "Ensuring the security of your web applications is paramount to protect against vulnerabilities and unauthorized access. This chapter explores security best practices, common threats, and strategies to safeguard your applications from potential risks.",
             "title1": "Introduction to Security Best Practices",
@@ -1278,7 +1248,7 @@
         },
         {
           "text": "Integration and Deployment",
-          "url": "/id",
+          "slug": "integration-and-deployment",
           "pageContent": {
             "description": "Smooth integration and deployment processes are crucial for delivering and maintaining successful web applications. This chapter explores integration strategies, continuous integration, and deployment pipelines to ensure a streamlined and efficient workflow.",
             "title1": "Introduction to Integration and Deployment",
@@ -1305,7 +1275,7 @@
         },
         {
           "text": "Building Scalable Applications",
-          "url": "/bsa",
+          "slug": "building-scalable-applications",
           "pageContent": {
             "description": "Scalability is essential for handling growing user loads and ensuring optimal performance in web applications. This chapter explores strategies, architectures, and best practices for building scalable applications that can efficiently adapt to increased demand.",
             "title1": "Introduction to Scalability",
@@ -1332,7 +1302,7 @@
         },
         {
           "text": "Microservices Architecture",
-          "url": "/ma",
+          "slug": "microservices-architecture",
           "pageContent": {
             "description": "Microservices architecture is a modern approach to building scalable and maintainable applications by breaking them down into small, independent services. This chapter explores the principles, benefits, and challenges of microservices, providing insights into designing and implementing a microservices-based system.",
             "title1": "Introduction to Microservices Architecture",
@@ -1359,7 +1329,7 @@
         },
         {
           "text": "GraphQL Basics",
-          "url": "/gb",
+          "slug": "graphql-basics",
           "pageContent": {
             "description": "GraphQL is a query language and runtime for APIs that enables clients to request only the data they need. This chapter provides a fundamental understanding of GraphQL, covering its syntax, schema definition, and the benefits it offers over traditional REST APIs.",
             "title1": "Introduction to GraphQL",
@@ -1386,7 +1356,7 @@
         },
         {
           "text": "Advanced GraphQL and Apollo Client",
-          "url": "/agac",
+          "slug": "advanced-graphql-and-apollo-client",
           "pageContent": {
             "description": "This chapter delves into advanced concepts and features of GraphQL, along with the integration of the Apollo Client for efficient data management in client-side applications. Explore topics such as mutations, subscriptions, caching strategies, and optimizing GraphQL queries.",
             "title1": "Exploring Advanced GraphQL Concepts",
@@ -1413,13 +1383,12 @@
         }
       ]
     },
-
     {
       "heading": "Technologies and Trends",
       "links": [
         {
           "text": "Progressive Web Apps (PWAs)",
-          "url": "/pwa",
+          "slug": "progressive-web-apps-pwas",
           "pageContent": {
             "description": "Progressive Web Apps (PWAs) are a type of web application that utilizes modern web capabilities to deliver an app-like experience to users. PWAs are designed to be reliable, fast, and engaging, providing a seamless experience across various devices and network conditions. They leverage service workers, responsive design, and other technologies to offer features traditionally associated with native mobile applications.",
             "title1": "Key Characteristics of PWAs",
@@ -1443,7 +1412,7 @@
         },
         {
           "text": "WebAssembly and JavaScript",
-          "url": "/wj",
+          "slug": "webassembly-and-javascript",
           "pageContent": {
             "description": "This chapter explores the integration of WebAssembly with JavaScript to leverage the performance benefits of low-level languages while maintaining the flexibility of high-level languages. Learn about the basics of WebAssembly, its use cases, and how to work with it alongside JavaScript.",
             "title1": "Introduction to WebAssembly",
@@ -1470,7 +1439,7 @@
         },
         {
           "text": "Serverless Architecture",
-          "url": "/sa",
+          "slug": "serverless-architecture",
           "pageContent": {
             "description": "Explore the paradigm of serverless architecture, where the focus shifts from managing servers to executing code in response to events. This chapter covers the fundamentals of serverless computing, its benefits, and how to leverage serverless platforms for scalable and cost-effective solutions.",
             "title1": "Introduction to Serverless Architecture",
@@ -1497,7 +1466,7 @@
         },
         {
           "text": "Machine Learning",
-          "url": "/ml",
+          "slug": "machine-learning",
           "pageContent": {
             "description": "Dive into the fascinating world of machine learning, where computers learn patterns from data to make predictions or decisions. This chapter introduces the fundamentals of machine learning, various algorithms, and how to implement machine learning models using popular frameworks.",
             "title1": "Introduction to Machine Learning",
@@ -1524,7 +1493,7 @@
         },
         {
           "text": "Web Components",
-          "url": "/wc",
+          "slug": "web-components",
           "pageContent": {
             "description": "Discover the power of reusable and encapsulated UI components with Web Components. This chapter introduces the concept of Web Components, explains how to create custom elements, and demonstrates their usage for building modular and maintainable web applications.",
             "title1": "Introduction to Web Components",
@@ -1551,7 +1520,7 @@
         },
         {
           "text": "Real-Time Communication",
-          "url": "/rtc2",
+          "slug": "real-time-communication-2",
           "pageContent": {
             "description": "Dive into the world of real-time communication on the web. This chapter explores technologies and techniques for building applications that enable instantaneous data exchange between clients and servers, fostering a dynamic and interactive user experience.",
             "title1": "Introduction to Real-Time Communication",
@@ -1578,7 +1547,7 @@
         },
         {
           "text": "Cross-Browser Compatibility",
-          "url": "/cbc",
+          "slug": "cross-browser-compatibility",
           "pageContent": {
             "description": "Navigate the challenges of building web applications that work seamlessly across various web browsers. This chapter delves into strategies, tools, and best practices to ensure cross-browser compatibility, promoting a consistent user experience for a diverse audience.",
             "title1": "Introduction to Cross-Browser Compatibility",
@@ -1605,7 +1574,7 @@
         },
         {
           "text": "Performance Optimization",
-          "url": "/po",
+          "slug": "performance-optimization",
           "pageContent": {
             "description": "Embark on the journey of enhancing your web application's speed and responsiveness. This chapter explores strategies, techniques, and tools to optimize the performance of your web application, delivering a smoother user experience and reducing load times.",
             "title1": "Introduction to Performance Optimization",
@@ -1632,7 +1601,7 @@
         },
         {
           "text": "Web Development",
-          "url": "/wd",
+          "slug": "web-development",
           "pageContent": {
             "description": "Embark on the exciting journey of web development, where creativity meets technology. This chapter provides a comprehensive overview of web development, covering key technologies, tools, and best practices to help you build dynamic and interactive web applications.",
             "title1": "Introduction to Web Development",
@@ -1659,7 +1628,7 @@
         },
         {
           "text": "JS Technologies and Trends",
-          "url": "/jtt",
+          "slug": "js-technologies-and-trends",
           "pageContent": {
             "description": "Stay ahead in the fast-evolving world of JavaScript with this chapter on technologies and trends. Explore the latest tools, frameworks, and practices that are shaping the JavaScript ecosystem, empowering you to build modern, efficient, and scalable applications.",
             "title1": "Introduction to JS Technologies and Trends",
